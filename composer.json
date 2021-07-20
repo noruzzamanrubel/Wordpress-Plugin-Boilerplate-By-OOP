@@ -1,0 +1,18 @@
+{
+    "name": "noruzzaman/boom-devs",
+    "type": "wordpress-plugin",
+    "license": "Gplv2",
+    "autoload": {
+        "psr-4": {
+            "Noruzzaman\\BoomDevs\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "noruzzamanrubel",
+            "email": "noruzzamanrubel@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
