@@ -75,10 +75,8 @@ final class Boom_Devs
      */
     public function activate()
     {
-        $installed = get_option('bd_install');
-        if (!$installed) {
-            update_option('bd_install', time());
-        }
+        $installer= new Noruzzaman\BoomDevs\Installer();
+        $installer->run();
     }
 
     /**

@@ -7,10 +7,6 @@ namespace Noruzzaman\BoomDevs\Admin;
  */
 class AddressBook
 {
-    public function __construct()
-    {
-    }
-
     /**
      * plugin_page
      *
@@ -41,7 +37,12 @@ class AddressBook
             include $template;
         }
     }
-
+    
+    /**
+     * Plugin Form Handler
+     *
+     * @return void
+     */
     public function form_handler()
     {
         if (!isset($_POST['submit_address'])) {

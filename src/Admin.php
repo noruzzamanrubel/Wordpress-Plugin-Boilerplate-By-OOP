@@ -11,7 +11,7 @@ class Admin
     /**
      * Initialize the class
      */
-    function __construct()
+    public function __construct()
     {
         $this->dispatch_actions();
         new Admin\Menu();
