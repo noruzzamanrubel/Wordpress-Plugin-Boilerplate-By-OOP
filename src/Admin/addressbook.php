@@ -41,4 +41,19 @@ class AddressBook
             include $template;
         }
     }
+
+    public function form_handler()
+    {
+        if (!isset($_POST['submit_address'])) {
+            return;
+        }
+
+        if (!wp_verify_nonce($_POST['_wpnonce'], 'new-address')) {
+            wp_die('Are Your Cheating?');
+        }
+
+        if (!current_user_can('manage_options')) {
+            wp_die('Are Your Cheating?');
+        }
+    }
 }
