@@ -5,14 +5,14 @@
     "autoload": {
         "psr-4": {
             "Noruzzaman\\BoomDevs\\": "src/"
-        }
+        },
+        "files": ["src/functions.php"]
     },
-    "authors": [
-        {
-            "name": "noruzzamanrubel",
-            "email": "noruzzamanrubel@gmail.com"
-        }
-    ],
+    "authors": [{
+        "name": "noruzzamanrubel",
+        "email": "noruzzamanrubel@gmail.com"
+    }],
     "minimum-stability": "dev",
     "require": {}
+
 }

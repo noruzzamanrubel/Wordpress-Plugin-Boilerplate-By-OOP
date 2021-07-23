@@ -5,15 +5,12 @@ namespace Noruzzaman\BoomDevs\frontend;
 /**
  * Shortcode handler class
  */
-class Shortcode
-{
-
+class Shortcode {
     /**
      * Initializes the class
      */
-    function __construct()
-    {
-        add_shortcode('boomdevs', [$this, 'render_shortcode']);
+    function __construct() {
+        add_shortcode( 'boomdevs', [$this, 'render_shortcode'] );
     }
 
     /**
@@ -24,8 +21,8 @@ class Shortcode
      *
      * @return string
      */
-    public function render_shortcode($atts, $content = '')
-    {
-        return 'Hello from Shortcode';
+    public function render_shortcode( $atts, $content = '' ) {
+        return 'hello from shoetcode';
     }
+
 }

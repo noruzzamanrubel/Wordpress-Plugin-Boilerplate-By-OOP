@@ -12,14 +12,13 @@
  * Text-Domin:boomdevs
  */
 
-if (!defined('ABSPATH')) {
+if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-final class Boom_Devs
-{
+final class Boom_Devs {
     /**
      * Plugin version
      *
@@ -32,11 +31,10 @@ final class Boom_Devs
      *
      * @return void
      */
-    private function __construct()
-    {
+    private function __construct() {
         $this->define_constants();
-        register_activation_hook(__FILE__, [$this, 'activate']);
-        add_action('plugins_loaded', [$this, 'init_plugin']);
+        register_activation_hook( __FILE__, [$this, 'activate'] );
+        add_action( 'plugins_loaded', [$this, 'init_plugin'] );
     }
 
     /**
@@ -44,13 +42,13 @@ final class Boom_Devs
      *
      * @return \Boom_Devs
      */
-    public static function init()
-    {
+    public static function init() {
         static $instance = false;
 
-        if (!$instance) {
+        if ( ! $instance ) {
             $instance = new self();
         }
+
         return $instance;
     }
 
@@ -59,13 +57,12 @@ final class Boom_Devs
      *
      * @return void
      */
-    public function define_constants()
-    {
-        define('BD_VERSION)', self::version);
-        define('BD_FILE', __FILE__);
-        define('BD_PATH', __DIR__);
-        define('BD_URL', plugins_url('', BD_FILE));
-        define('BD_ASSETS', BD_URL . '/assets');
+    public function define_constants() {
+        define( 'BD_VERSION)', self::version );
+        define( 'BD_FILE', __FILE__ );
+        define( 'BD_PATH', __DIR__ );
+        define( 'BD_URL', plugins_url( '', BD_FILE ) );
+        define( 'BD_ASSETS', BD_URL . '/assets' );
     }
 
     /**
@@ -73,9 +70,8 @@ final class Boom_Devs
      *
      * @return void
      */
-    public function activate()
-    {
-        $installer= new Noruzzaman\BoomDevs\Installer();
+    public function activate() {
+        $installer = new Noruzzaman\BoomDevs\Installer();
         $installer->run();
     }
 
@@ -84,14 +80,16 @@ final class Boom_Devs
      *
      * @return void
      */
-    public function init_plugin()
-    {
-        if (is_admin()) {
+    public function init_plugin() {
+
+        if ( is_admin() ) {
             new Noruzzaman\BoomDevs\Admin();
         } else {
             new Noruzzaman\BoomDevs\Frontend();
         }
+
     }
+
 }
 
 /**
@@ -99,8 +97,7 @@ final class Boom_Devs
  *
  * @return \Boom_Devs
  */
-function Boom_Devs()
-{
+function Boom_Devs() {
     return Boom_Devs::init();
 }
 
