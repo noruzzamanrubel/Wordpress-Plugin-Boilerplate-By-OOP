@@ -42,3 +42,43 @@ function bd_insert_address( $args = [] ) {
 
     return $wpdb->insert_id;
 }
+
+/**
+ * Facth Address
+ *
+ * @param  array $args
+ *
+ * @return array
+ */
+function bd_get_address( $args = [] ) {
+    global $wpdb;
+
+    $defaults = [
+        'number'  => '20',
+        'offset'  => 0,
+        'orderby' => 'id',
+        'order'   => 'ASC',
+    ];
+
+    $args = wp_parse_args( $args, $defaults );
+
+    $sql = $wpdb->prepare(
+        "SELECT * FROM {$wpdb->prefix}bd_addresses
+        ORDER BY {$args['orderby']} {$args['order']}
+        LIMIT %d, %d",
+        $args['offset'], $args['number']
+    );
+
+    $result = $wpdb->get_results( $sql );
+    return $result;
+}
+
+/**
+ * Get the count of total address
+ *
+ * @return int
+ */
+function bd_address_count() {
+    global $wpdb;
+    return (int) $wpdb->get_var( "SELECT COUNT(id) FROM {$wpdb->prefix}bd_addresses" );
+}

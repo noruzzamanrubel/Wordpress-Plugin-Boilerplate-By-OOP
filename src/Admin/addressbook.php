@@ -88,7 +88,7 @@ class AddressBook {
         }
 
         $redirected_to = admin_url( 'admin.php?page=boomdevs&inserted=true' );
-        
+
         wp_redirect( $redirected_to );
 
     }

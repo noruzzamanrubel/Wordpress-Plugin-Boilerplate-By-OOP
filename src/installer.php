@@ -29,15 +29,24 @@ class Installer {
     }
 
     /**
-     * Create necessary database table
+     * Create necessary database tables
      *
      * @return void
      */
-    public function Create_Tables() {
+    public function create_tables() {
         global $wpdb;
+
         $charset_collate = $wpdb->get_charset_collate();
 
-        $schema = "CREATE TABLE IF NOT EXISTS `{$wpdb->prefix}bd_addresses` ( `id` INT(11) NOT NULL , `name` VARCHAR(255) NOT NULL , `address` VARCHAR(255) NULL , `phone` VARCHAR(30) NULL , `created_by` BIGINT(20) NULL , `created_at` DATETIME NOT NULL ) $charset_collate";
+        $schema = "CREATE TABLE IF NOT EXISTS `{$wpdb->prefix}bd_addresses` (
+          `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+          `name` varchar(100) NOT NULL DEFAULT '',
+          `address` varchar(255) DEFAULT NULL,
+          `phone` varchar(30) DEFAULT NULL,
+          `created_by` bigint(20) unsigned NOT NULL,
+          `created_at` datetime NOT NULL,
+          PRIMARY KEY (`id`)
+        ) $charset_collate";
 
         if ( ! function_exists( 'dbDelta' ) ) {
             require_once ABSPATH . 'wp-admin/includes/upgrade.php';
