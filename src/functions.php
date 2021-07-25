@@ -80,5 +80,41 @@ function bd_get_address( $args = [] ) {
  */
 function bd_address_count() {
     global $wpdb;
-    return (int) $wpdb->get_var( "SELECT COUNT(id) FROM {$wpdb->prefix}bd_addresses" );
+
+    return (int) $wpdb->get_var(
+        "SELECT COUNT(id) FROM {$wpdb->prefix}bd_addresses"
+    );
+}
+
+/**
+ * Fetch a single data from db
+ *
+ * @param  int $id
+ *
+ * @return object
+ */
+function bd_get_address_data( $id ) {
+    global $wpdb;
+
+    return $wpdb->get_row(
+        $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}bd_addresses WHERE id = %d", $id
+        ) );
+}
+
+/**
+ * Delete a single address
+ *
+ * @param  int $id
+ *
+ * @return object
+ */
+function bd_delete_address( $id ) {
+    global $wpdb;
+
+    return $wpdb->delete(
+        $wpdb->prefix . 'bd_addresses',
+        ['id' => $id],
+        ['%d'],
+
+    );
 }
