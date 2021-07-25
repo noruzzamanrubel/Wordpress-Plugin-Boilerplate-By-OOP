@@ -23,24 +23,49 @@ function bd_insert_address( $args = [] ) {
 
     ];
 
-    $data     = wp_parse_args( $args, $defaults );
-    $inserted = $wpdb->insert(
-        "{$wpdb->prefix}bd_addresses",
-        $data,
-        [
-            '%s',
-            '%s',
-            '%s',
-            '%d',
-            '%s',
-        ]
-    );
+    $data = wp_parse_args( $args, $defaults );
 
-    if ( ! $inserted ) {
-        return new \WP_Error( 'failed-to-insert', __( 'Failed to insert data', 'boomdevs' ) );
+    if ( isset( $data['id'] ) ) {
+        
+        $id = $data['id'];
+        unset( $data['id'] );
+
+        $updated = $wpdb->update(
+            $wpdb->prefix . 'bd_addresses',
+            $data,
+            ['id' => $id],
+            [
+                '%s',
+                '%s',
+                '%s',
+                '%d',
+                '%s',
+            ]
+            ['%d']
+        );
+
+        return $updated;
+
+    } else {
+        $inserted = $wpdb->insert(
+            "{$wpdb->prefix}bd_addresses",
+            $data,
+            [
+                '%s',
+                '%s',
+                '%s',
+                '%d',
+                '%s',
+            ]
+        );
+
+        if ( ! $inserted ) {
+            return new \WP_Error( 'failed-to-insert', __( 'Failed to insert data', 'boomdevs' ) );
+        }
+
+        return $wpdb->insert_id;
     }
 
-    return $wpdb->insert_id;
 }
 
 /**
@@ -115,6 +140,5 @@ function bd_delete_address( $id ) {
         $wpdb->prefix . 'bd_addresses',
         ['id' => $id],
         ['%d'],
-
     );
 }

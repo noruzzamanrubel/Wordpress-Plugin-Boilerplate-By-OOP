@@ -32,6 +32,5 @@ class Menu {
 
     public function setting_page() {
         echo "hello from Setting";
-
     }
 }
