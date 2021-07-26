@@ -58,7 +58,7 @@ final class Boom_Devs {
      * @return void
      */
     public function define_constants() {
-        define( 'BD_VERSION)', self::version );
+        define( 'BD_VERSION', self::version );
         define( 'BD_FILE', __FILE__ );
         define( 'BD_PATH', __DIR__ );
         define( 'BD_URL', plugins_url( '', BD_FILE ) );
@@ -81,6 +81,8 @@ final class Boom_Devs {
      * @return void
      */
     public function init_plugin() {
+
+        new \Noruzzaman\BoomDevs\Assets();
 
         if ( is_admin() ) {
             new Noruzzaman\BoomDevs\Admin();

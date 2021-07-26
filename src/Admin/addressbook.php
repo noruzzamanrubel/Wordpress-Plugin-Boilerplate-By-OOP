@@ -30,10 +30,6 @@ class AddressBook {
                 $template = __DIR__ . '/view/address-edit.php';
                 break;
 
-            case 'view':
-                $template = __DIR__ . '/view/address-view.php';
-                break;
-
             default:
                 $template = __DIR__ . '/view/address-list.php';
                 break;

@@ -22,7 +22,7 @@ class Shortcode {
      * @return string
      */
     public function render_shortcode( $atts, $content = '' ) {
-        return 'hello from shoetcode';
+        return '<div class="boomdevs-shortcode">hello from shoetcode</div>';
     }
 
 }
