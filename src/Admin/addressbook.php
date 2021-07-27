@@ -101,7 +101,6 @@ class AddressBook {
 
         wp_redirect( $redirected_to );
         exit;
-
     }
 
     /**
