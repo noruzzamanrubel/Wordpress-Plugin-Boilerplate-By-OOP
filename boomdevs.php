@@ -109,5 +109,3 @@ function Boom_Devs() {
  * @return void
  */
 Boom_Devs();
-
-
