@@ -1,5 +1,4 @@
 <?php
-
 namespace Noruzzaman\BoomDevs;
 
 class Installer {
